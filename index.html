@@ -1,0 +1,122 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ID's AI</title>
+
+<style>
+body{
+margin:0;
+background:#0f0f0f;
+font-family:Arial;
+color:white;
+display:flex;
+flex-direction:column;
+height:100vh;
+}
+
+header{
+padding:20px;
+border-bottom:1px solid #222;
+text-align:center;
+}
+
+.chat{
+flex:1;
+padding:20px;
+overflow:auto;
+}
+
+.message{
+background:#1f1f1f;
+padding:15px;
+border-radius:20px;
+margin-bottom:15px;
+max-width:70%;
+}
+
+.ai{
+background:white;
+color:black;
+margin-left:auto;
+}
+
+.bottom{
+display:flex;
+gap:10px;
+padding:20px;
+border-top:1px solid #222;
+}
+
+input{
+flex:1;
+padding:15px;
+border:none;
+border-radius:20px;
+background:#1f1f1f;
+color:white;
+font-size:16px;
+}
+
+button{
+padding:15px 20px;
+border:none;
+border-radius:20px;
+background:white;
+font-weight:bold;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>ID's AI</h1>
+<p>Assistant intelligent</p>
+</header>
+
+<div class="chat" id="chat">
+
+<div class="message ai">
+Bonjour, je suis ID's AI. Pose-moi une question.
+</div>
+
+</div>
+
+<div class="bottom">
+<input type="text" id="question" placeholder="Pose une question...">
+<button onclick="sendMessage()">Envoyer</button>
+</div>
+
+<script>
+function sendMessage(){
+
+const input = document.getElementById("question");
+const chat = document.getElementById("chat");
+
+if(input.value.trim() === "") return;
+
+const userMessage = document.createElement("div");
+userMessage.className = "message";
+userMessage.innerText = input.value;
+
+chat.appendChild(userMessage);
+
+const aiMessage = document.createElement("div");
+aiMessage.className = "message ai";
+aiMessage.innerText = "ID's AI réfléchit...";
+
+chat.appendChild(aiMessage);
+
+input.value = "";
+
+chat.scrollTop = chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
+```
